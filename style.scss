@@ -1,0 +1,88 @@
+@import "./partials/functions";
+@import "./partials/variables";
+@import "./partials/mixins";
+
+@include google-font("Roboto+Mono");
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    h1,
+    h2,
+    h3,
+    h4 {
+        font-family: $headline-font;
+    }
+    p {
+        font-family: $text-font;
+        color: $yellow;
+        text-align: justify
+    }
+}
+
+// Navigation bar
+#header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: $header-height;
+    background: $dark-blue;
+    color: $yellow;
+    ul {
+        width: 7 * $col;
+        display: flex;
+        height: 100%;
+        flex-direction: row;
+        align-items: center;
+    }
+    li {
+        font-family: $text-font;
+        margin-left: 20px;
+    }
+    img {
+        margin: auto;
+        height: $header-height * .6;
+    }
+}
+
+// Content
+#main {
+    width: $content-width;
+    margin: auto;
+    margin-top: $header-height * 1.3;
+
+    @include large-screens {
+        font-size: $large-text;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        color: $green;
+        margin-bottom: 5px;
+    }
+    button {
+        @include rounded-btn($font-size: $medium-text);
+    }
+}
+
+
+.error {
+    color: $error;
+}
+.critical-error {
+    @extend .error;
+    font-weight: 600;
+    border-bottom: thick $error;    
+}
+
+
+
+
+
+

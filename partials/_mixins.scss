@@ -1,0 +1,45 @@
+
+// multiples params
+@mixin box-shadow($shadow...) {
+  box-shadow: $shadow;
+}
+
+// params are used in order or by setting the name
+@mixin rounded-btn($radius: 7px, $font-size: 16px) {
+  @include box-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+  
+  padding: 5px;
+  // border-style: none;
+  border: solid 1px darken($green, 5%) ;
+  border-radius: $radius;
+  
+  font-size: $font-size;
+  font-family: $text-font;
+  font-weight: 500;
+  text-transform: uppercase;
+
+  color: $white;
+  background-color: $green;
+  transition: .2s background-color cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  
+  &:hover {
+    cursor:pointer;
+    background-color: darken($green, 10%);
+  }
+
+}
+
+@mixin google-font($font) {
+  $font: unquote($font);
+  // interpolation works only with css imports
+  @import url(https://fonts.googleapis.com/css?family=#{$font});
+
+}
+
+@mixin large-screens() {
+  // nested media queries are allowed 
+  @media only screen and (min-width:960px) {
+    // allows to insert scss when using this mixin
+    @content; 
+  }
+}
